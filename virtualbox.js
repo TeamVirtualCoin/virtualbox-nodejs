@@ -102,3 +102,7 @@ class VirtualBox {
             .catch(err => return false)
 	}
 }
+
+module.exports = {
+	VirtualBox : VirtualBox
+}

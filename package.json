@@ -1,7 +1,6 @@
 {
-  "name": "virtualbox",
+  "name": "virtualbox-js",
   "version": "0.0.1",
-  "description": "",
   "main": "virtualbox.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +9,15 @@
   "license": "MIT",
   "dependencies": {
     "node-fetch": "^2.6.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamVirtualCoin/virtualbox-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TeamVirtualCoin/virtualbox-nodejs/issues"
+  },
+  "homepage": "https://github.com/TeamVirtualCoin/virtualbox-nodejs#readme",
+  "description": ""
 }
