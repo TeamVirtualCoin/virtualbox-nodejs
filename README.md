@@ -61,4 +61,4 @@ virtualbox.SentTx("address")
 virtualbox.CreateWallet()
   .then(wallet => console.log(wallet))
   .catch(err => console.log(err))
-//Outputs An Objec
+//Outputs An Object With Mnemonic, Privatekey and Publickey (address)
