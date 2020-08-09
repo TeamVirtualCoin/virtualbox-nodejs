@@ -35,12 +35,12 @@ virtualbox.GetTxById(393)
 //Outputs A Blank Transaction If It Doesn't Exist As An Object
 ```
 
-**Getting A List Of Received Txs
+**Getting A List Of Received Txs**
 
 ```javascript
 virtualbox.ReceivedTx("address")
   .then(txs => console.log(txs))
   .catch(err => console.log(err))
 //Outputs null If No Transactions Were Made Before
-//Outputs A Array With A List Of Transactions
+//Outputs An Array With A List Of Transactions
 ```
