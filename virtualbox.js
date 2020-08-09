@@ -16,8 +16,8 @@ class VirtualBox {
 	}
 
 	async CreateWallet() {
-		let res =  fetch(d + "/createwallet")
-		let wallet = res.json()
+		let res = await fetch(d + "/createwallet")
+		let wallet = await res.json()
 		return wallet
 	}
 
@@ -42,7 +42,7 @@ class VirtualBox {
 	async ReceivedTx(publicKey) {
 		try {
 			let res = await fetch(d + "/receivedtx/" + publicKey)
-			let txs = res.json()
+			let txs = await res.json()
 			return txs
 		} catch(err) {
 			return err
@@ -52,7 +52,7 @@ class VirtualBox {
 	async SentTx(publicKey) {
 		try {
 			let res = await fetch(d + "/senttx/" + publicKey)
-			let txs = res.json()
+			let txs = await res.json()
 			return txs
 		} catch(err) {
 			return err
