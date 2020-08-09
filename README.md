@@ -30,5 +30,17 @@ virtualbox.Balance("address")
 ```javascript
 virtualbox.GetTxById(393)
   .then(tx => console.log(tx))
-//Outputs A Blank Transaction If It Doesn't Exist
+  .catch(err => console.log(err))
+//Outputs A Valid Transaction If Exists As An Object
+//Outputs A Blank Transaction If It Doesn't Exist As An Object
+```
+
+**Getting A List Of Received Txs
+
+```javascript
+virtualbox.ReceivedTx("address")
+  .then(txs => console.log(txs))
+  .catch(err => console.log(err))
+//Outputs null If No Transactions Were Made Before
+//Outputs A Array With A List Of Transactions
 ```
