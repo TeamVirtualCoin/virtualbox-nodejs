@@ -4,6 +4,10 @@ let d = "http://" + daemon
 
 class VirtualBox {
 
+	static init(dae) {
+		d = "http://" + dae;
+	}
+	
 	static GetTxById(id) {
 		id = String(id)
 		fetch(d + "/gettx/" + String(id))
@@ -54,47 +58,47 @@ class VirtualBox {
 			.catch(err => return false)
 	}
 
-        static IsContract(txid) {
-                fetch(d + "/iscontract/" + String(txid)
-                        .then(res => res.json())
-                        .then(iscontract => return iscontract)
-                        .catch(err => return false)
+    static IsContract(txid) {
+    	fetch(d + "/iscontract/" + String(txid)
+       		.then(res => res.json())
+            .then(iscontract => return iscontract)
+            .catch(err => return false)
+    }
+
+    static EstimateContractFuel(code) {
+    	fetch(d + "/contractfuel/" + code)
+        	.then(res => res.json())
+            .then(fuel => return fuel)
+            .catch(err => return false)
+    }
+
+    static SendContract(privateKey,code) {
+    	obj = {
+        	"privateKey" : privateKey,
+            "code" : code
+        }
+    	fetch(d + "/sendcontract",{
+        	method : "POST",
+            body : JSON.stringify(obj)
+        })
+        	.then(res => res.json())
+            .then(tx => return tx)
+            .catch(err => return false)
         }
 
-        static EstimateContractFuel(code) {
-                fetch(d + "/contractfuel/" + code)
-                        .then(res => res.json())
-                        .then(fuel => return fuel)
-                        .catch(err => return false)
+	static CallContract(txid,privateKey,call,maxAllowance) {
+    	obj = {
+       		"txid" : txid,
+            "privateKey" : privateKey,
+            "call" : call,
+            "maxAllowance" : maxAllowance
         }
-
-        static SendContract(privateKey,code) {
-                obj = {
-                        "privateKey" : privateKey,
-                        "code" : code
-                }
-                fetch(d + "/sendcontract",{
-                        method : "POST",
-                        body : JSON.stringify(obj)
-                })
-                        .then(res => res.json())
-                        .then(tx => return tx)
-                        .catch(err => return false)
-        }
-
-        static CallContract(txid,privateKey,call,maxAllowance) {
-                obj = {
-                        "txid" : txid,
-                        "privateKey" : privateKey,
-                        "call" : call,
-                        "maxAllowance" : maxAllowance
-                }
-                fetch(d + "/callcontract",{
-                        method : "POST",
-                        body : JSON.stringify(obj)
-                })
-                        .then(res => res.json())
-                        .then(tx => return tx)
-                        .catch(err => return false)
+        fetch(d + "/callcontract",{
+        	method : "POST",
+            body : JSON.stringify(obj)
+        })
+        	.then(res => res.json())
+            .then(tx => return tx)
+            .catch(err => return false)
         }
 }
