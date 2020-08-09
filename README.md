@@ -24,3 +24,11 @@ virtualbox.Balance("address")
   .catch(err => console.log(err))
 //Outputs In Number
 ```
+
+**Getting A Transaction By Id**
+
+```javascript
+virtualbox.GetTxById(393)
+  .then(tx => console.log(tx))
+//Outputs A Blank Transaction If It Doesn't Exist
+```
