@@ -62,6 +62,7 @@ virtualbox.CreateWallet()
   .then(wallet => console.log(wallet))
   .catch(err => console.log(err))
 //Outputs An Object With Mnemonic, Privatekey and Publickey (address)
+```
 
 **Checking If A Transaction Is An Contract**
 
