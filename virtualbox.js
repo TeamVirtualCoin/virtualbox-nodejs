@@ -100,5 +100,5 @@ class VirtualBox {
         	.then(res => res.json())
             .then(tx => return tx)
             .catch(err => return false)
-        }
+	}
 }
