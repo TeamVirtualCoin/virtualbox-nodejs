@@ -28,7 +28,7 @@ virtualbox.Balance("address")
 **Getting A Transaction By Id**
 
 ```javascript
-virtualbox.GetTxById(393)
+virtualbox.GetTxById(id)
   .then(tx => console.log(tx))
   .catch(err => console.log(err))
 //Outputs A Valid Transaction If Exists As An Object
@@ -62,3 +62,16 @@ virtualbox.CreateWallet()
   .then(wallet => console.log(wallet))
   .catch(err => console.log(err))
 //Outputs An Object With Mnemonic, Privatekey and Publickey (address)
+
+**Checking If A Transaction Is An Contract**
+
+``javascript
+virtualbox.IsContract(id)
+  .then(iscontract => console.log(iscontract))
+  .catch(err => console.log(err))
+//Outputs True If It Is An Contract, Else False
+```
+
+**Sending A Transaction**
+```javascript
+```
