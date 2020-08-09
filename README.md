@@ -54,3 +54,11 @@ virtualbox.SentTx("address")
 //Outputs null If No Transactions Were Made Before
 //Outputs An Array With A List Of Transactions
 ```
+
+**Creating A Wallet**
+
+```javascript
+virtualbox.CreateWallet()
+  .then(wallet => console.log(wallet))
+  .catch(err => console.log(err))
+//Outputs An Objec
