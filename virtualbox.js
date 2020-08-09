@@ -51,7 +51,7 @@ class VirtualBox {
 
 	async SentTx(publicKey) {
 		try {
-			let res = await fetch(d + "/sentx/" + publicKey)
+			let res = await fetch(d + "/senttx/" + publicKey)
 			let txs = res.json()
 			return txs
 		} catch(err) {
