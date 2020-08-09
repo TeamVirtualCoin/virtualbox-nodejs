@@ -19,7 +19,7 @@ virtualbox.init("virtualcoin.glitch.me")
 **Checking Balance**
 
 ```javascript
-virtualbox.balance("address")
+virtualbox.Balance("address")
   .then(balance => console.log(balance))
   .catch(err => console.log(err))
 //Outputs In Number
