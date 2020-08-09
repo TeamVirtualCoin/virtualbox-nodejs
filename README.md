@@ -44,3 +44,13 @@ virtualbox.ReceivedTx("address")
 //Outputs null If No Transactions Were Made Before
 //Outputs An Array With A List Of Transactions
 ```
+
+**Getting A List Of Sent Txs**
+
+```javascript
+virtualbox.SentTx("address")
+  .then(txs => console.log(txs))
+  .catch(err => console.log(err))
+//Outputs null If No Transactions Were Made Before
+//Outputs An Array With A List Of Transactions
+```
