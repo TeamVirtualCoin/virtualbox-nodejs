@@ -58,21 +58,21 @@ class VirtualBox {
 			.catch(err => return false)
 	}
 
-    static IsContract(txid) {
+	static IsContract(txid) {
     	fetch(d + "/iscontract/" + String(txid)
        		.then(res => res.json())
             .then(iscontract => return iscontract)
             .catch(err => return false)
-    }
+ 	}
 
-    static EstimateContractFuel(code) {
+	static EstimateContractFuel(code) {
     	fetch(d + "/contractfuel/" + code)
         	.then(res => res.json())
             .then(fuel => return fuel)
             .catch(err => return false)
-    }
+	}
 
-    static SendContract(privateKey,code) {
+	static SendContract(privateKey,code) {
     	obj = {
         	"privateKey" : privateKey,
             "code" : code
@@ -84,7 +84,7 @@ class VirtualBox {
         	.then(res => res.json())
             .then(tx => return tx)
             .catch(err => return false)
-        }
+	}
 
 	static CallContract(txid,privateKey,call,maxAllowance) {
     	obj = {
