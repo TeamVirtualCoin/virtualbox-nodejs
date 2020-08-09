@@ -4,102 +4,125 @@ let d = "http://" + daemon
 
 class VirtualBox {
 
-	static init(dae) {
+	init(dae) {
 		d = "http://" + dae;
 	}
 	
-	static GetTxById(id) {
+	async GetTxById(id) {
 		id = String(id)
-		fetch(d + "/gettx/" + String(id))
-			.then(res => res.json())
-			.then(tx => return tx)
+		let res = await fetch(d + "/gettx/" + String(id))
+		let tx = await res.json()
+		return tx
 	}
 
-	static CreateWallet() {
-		fetch(d + "/createwallet")
-			.then(res =  res.json())
-			.then(wallet => return wallet)
-			.catch(err => return false)
+	async CreateWallet() {
+		let res =  fetch(d + "/createwallet")
+		let wallet = res.json()
+		return wallet
 	}
 
-	static SendTx(privateKey,amount,receiver) {
+	async SendTx(privateKey,amount,receiver) {
 		obj = {
 			"privateKey" : privateKey,
 			"amount" : amount,
 			"receiver" : receiver
 		}
-		fetch(d + "/sendtx",{
-			method : "POST",
-			body : JSON.stringify(obj)
-		})
-			.then(res => res.json())
-			.then(tx => return tx)
-			.catch(err => return false)
+		try {
+			let res = await fetch(d + "/sendtx",{
+				method : "POST",
+				body : JSON.stringify(obj)
+			})
+			let tx = await res.json()
+			return tx
+		} catch(err) {
+			return err
+		}
 	}
 
-	static ReceivedTx(publicKey) {
-		fetch(d + "/receivedtx/" + publicKey)
-			.then(res => res.json())
-			.then(txs => return txs)
-			.catch(err => return false)
+	async ReceivedTx(publicKey) {
+		try {
+			let res = await fetch(d + "/receivedtx/" + publicKey)
+			let txs = res.json()
+			return txs
+		} catch(err) {
+			return err
+		}
 	}
 
-	static SentTx(publicKey) {
-		fetch(d + "/sentx/" + publicKey)
-			.then(res => res.json())
-			.then(txs => return txs)
-			.catch(err => return false)
+	async SentTx(publicKey) {
+		try {
+			let res = await fetch(d + "/sentx/" + publicKey)
+			let txs = res.json()
+			return txs
+		} catch(err) {
+			return err
+		}
 	}
 
-	static Balance(publicKey) {
-		fetch(d + "/balance/" + publicKey)
-			.then(res => res.json())
-			.then(bal => return bal)
-			.catch(err => return false)
+	async Balance(publicKey) {
+		try {
+			let res = await fetch(d + "/balance/" + publicKey)
+			let bal = await res.json()
+			return bal
+		} catch(err) {
+			return err
+		}
 	}
 
-	static IsContract(txid) {
-    	fetch(d + "/iscontract/" + String(txid)
-       		.then(res => res.json())
-            .then(iscontract => return iscontract)
-            .catch(err => return false)
+	async IsContract(txid) {
+		try {
+    		let res = await fetch(d + "/iscontract/" + String(txid))
+       		let is = await res.json()
+            return is
+ 		} catch(err) {
+ 			return err
+ 		}
  	}
 
-	static EstimateContractFuel(code) {
-    	fetch(d + "/contractfuel/" + code)
-        	.then(res => res.json())
-            .then(fuel => return fuel)
-            .catch(err => return false)
+	async EstimateContractFuel(code) {
+		try {
+    		let res = await fetch(d + "/contractfuel/" + code)
+        	let fuel = await res.json()
+            return fuel
+        } catch(err) {
+        	return errl
+        }
 	}
 
-	static SendContract(privateKey,code) {
+	async SendContract(privateKey,code) {
     	obj = {
         	"privateKey" : privateKey,
             "code" : code
         }
-    	fetch(d + "/sendcontract",{
-        	method : "POST",
-            body : JSON.stringify(obj)
-        })
-        	.then(res => res.json())
-            .then(tx => return tx)
-            .catch(err => return false)
+        try {
+    		let res = await fetch(d + "/sendcontract",{
+        		method : "POST",
+       	        body : JSON.stringify(obj)
+        	})
+        	let tx = await res.json()
+            return tx
+		} catch(err) {
+			return err
+		}
 	}
 
-	static CallContract(txid,privateKey,call,maxAllowance) {
+	async CallContract(txid,privateKey,call,maxAllowance) {
     	obj = {
        		"txid" : txid,
             "privateKey" : privateKey,
             "call" : call,
             "maxAllowance" : maxAllowance
         }
-        fetch(d + "/callcontract",{
-        	method : "POST",
-            body : JSON.stringify(obj)
-        })
-        	.then(res => res.json())
-            .then(tx => return tx)
-            .catch(err => return false)
+        try {
+    	    let res = await fetch(d + "/callcontract",{
+        		method : "POST",
+         		body : JSON.stringify(obj)
+      		})
+        	let call = await res.json()
+        	return call
+        } catch(err) {
+        	return err
+        }
 	}
 }
 
