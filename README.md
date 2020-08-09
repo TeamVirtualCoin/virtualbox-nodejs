@@ -66,7 +66,7 @@ virtualbox.CreateWallet()
 
 **Checking If A Transaction Is An Contract**
 
-``javascript
+```javascript
 virtualbox.IsContract(id)
   .then(iscontract => console.log(iscontract))
   .catch(err => console.log(err))
