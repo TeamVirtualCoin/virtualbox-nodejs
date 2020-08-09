@@ -22,7 +22,7 @@ class VirtualBox {
 	}
 
 	async SendTx(privateKey,amount,receiver) {
-		obj = {
+		let obj = {
 			"privateKey" : privateKey,
 			"amount" : amount,
 			"receiver" : receiver
@@ -90,7 +90,7 @@ class VirtualBox {
 	}
 
 	async SendContract(privateKey,code) {
-    	obj = {
+    	let obj = {
         	"privateKey" : privateKey,
             "code" : code
         }
@@ -107,7 +107,7 @@ class VirtualBox {
 	}
 
 	async CallContract(txid,privateKey,call,maxAllowance) {
-    	obj = {
+    	let obj = {
        		"txid" : txid,
             "privateKey" : privateKey,
             "call" : call,
